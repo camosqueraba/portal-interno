@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center"> 
+    <div class="row justify-content-center">  
         <div class="col-md-11">
             <div class="card">
                 @if (Session::has('mensaje'))
@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ url('publication/'.$publication->id) }}" enctype="multipart/form-data">
                         @csrf
                         {{method_field('PATCH')}}
-                        @include('publication.form'); 
+                        @include('publication.form');  
                     </form>
                 </div>
             </div>

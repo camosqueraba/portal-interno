@@ -101,7 +101,7 @@ class MainController extends Controller
             ORDER BY Dia";
               
         $cumpleanios = DB::connection('sqlsrv')->select($consulta_cumpleanios);
-        $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($cumpleanios);
+        
        /* $cumpleanos_con_fotos = Birthday::select('*')
                                         ->where('MONTH(fecha)','=',$mes_actual)
                                          ->get(); */
@@ -115,7 +115,7 @@ class MainController extends Controller
         
 
          $todos_cumpleanios = $this->ordernarCumpleanios($todos_cumpleanios);
-      
+         $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($todos_cumpleanios);
         return view('principal.index', compact('anuncios', 'datos_slides', 'imagenes_slides', 'documentos', 'cumpleanieros_hoy', 'todos_cumpleanios', 'mes', 'dia_mes', 'cumpleanos_con_fotos'));
         //return response()->json($cumpleanios_n_n);
         //return response()->json($todos_cumpleanios);

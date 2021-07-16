@@ -9,7 +9,7 @@ class ExcelController extends Controller
 {
     
 
-    public function leerArchivo(){
+    public function leerArchivo(){ 
 
         # Recomiendo poner la ruta absoluta si no está junto al script
         # Nota: no necesariamente tiene que tener la extensión XLSX
@@ -49,7 +49,7 @@ class ExcelController extends Controller
            
         }
 
-        $numero_de_filas = $indice_fila - 1;
+        $numero_de_filas = $indice_fila ;
 
         //echo "numero de filas es: <strong>$numero_de_filas</strong><br><br>";
         return $numero_de_filas;

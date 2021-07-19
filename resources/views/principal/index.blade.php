@@ -106,15 +106,15 @@
                             <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Citas</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/contratacion/Index.aspx" target="_blank">
                             <i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Contratación</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.52:8686/SST_Perfect-Body/public/" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/SST_Perfect-Body/public/" target="_blank">
                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>  C.P.C.PBMC</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/gerencial/index.aspx" target="_blank">
                             <i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>  Gerencial</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.52:8686/Gestion_Documental/public/login" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/Gestion_Documental/public/login" target="_blank">
                             <i class="fa fa-archive fa-fw" aria-hidden="true"></i>  Gestion Documental</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.52:8686/Incidencias/public/login" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/Incidencias/public/login" target="_blank">
                             <i class="fa fa-edit fa-fw" aria-hidden="true"></i>  Incidencias</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.52:8686/Inspeccion_perfect_Body/public/login" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/Inspeccion_perfect_Body/public/login" target="_blank">
                             <i class="fa fa-clipboard fa-fw" aria-hidden="true"></i>  Inspección</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/ORDENES/index.aspx" target="_blank">
                             <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>  Orden Externa</a>
@@ -384,7 +384,7 @@
               <div>
                 <!--<span class="badge badge-pill badge-primary pull-right">{{$cumpleanio->Dia}}</span>-->
                 <h4 style="display: inline-block; color:#003660; margin-right:15px;">{{$cumpleanio->Dia}}</h3>
-                <h6 style="display: inline-block;">{{$cumpleanio->Empleado}}</h6>
+                <h6 style="display: inline-block; font-size: 14px">{{$cumpleanio->Empleado}}</h6>
               </div>
               @endforeach
             </div>

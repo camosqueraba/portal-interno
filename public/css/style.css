@@ -267,7 +267,9 @@ div#preloader {
   width: 100%;
   /*heigth: auto*/
   height: 120px;
-  background: rgba(0, 0, 0, 0.534);
+  /*background: rgba(0, 0, 0, 0.534);*/
+  background: rgb(206 206 206 / 18%);
+
   z-index: 9;
 }
 
@@ -2507,6 +2509,7 @@ width: auto;
 height: auto;
 /*overflow-y: scroll;*/
 background-color: rgb(110,110,110);
+z-index: 1000;
 }
 .titulo_enlace_menu{
   margin-bottom: 0px;
@@ -2528,13 +2531,14 @@ background-color: rgb(110,110,110);
     padding: 2px 0px;
     margin-bottom: 0px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     padding-left: 5px;
     text-align: left;
+    z-index: 1000;
 }
 #enlace_menu:hover {
     background: #003660;
-    font-size: 22px;
+    font-size: 18px;
   }
 
 .dropdown-content a:hover {

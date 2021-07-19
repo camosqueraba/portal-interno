@@ -114,8 +114,8 @@ class MainController extends Controller
         $todos_cumpleanios = array_merge($cumpleanios, $cumpleanios_n_n);
         
 
-         $todos_cumpleanios = $this->ordernarCumpleanios($todos_cumpleanios);
-         $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($todos_cumpleanios);
+        $todos_cumpleanios = $this->ordernarCumpleanios($todos_cumpleanios);
+        $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($todos_cumpleanios);
         return view('principal.index', compact('anuncios', 'datos_slides', 'imagenes_slides', 'documentos', 'cumpleanieros_hoy', 'todos_cumpleanios', 'mes', 'dia_mes', 'cumpleanos_con_fotos'));
         //return response()->json($cumpleanios_n_n);
         //return response()->json($todos_cumpleanios);

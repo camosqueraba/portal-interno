@@ -51,7 +51,8 @@
                         @include('publication.form_cumpleanios'); 
                     </form>
 
-                    
+                    <a class="btn btn-success" href="{{url('publication')}}" style="margin-left: 800px">
+                        {{ __('Regresar') }} </a>
                 </div>
                 
             </div>

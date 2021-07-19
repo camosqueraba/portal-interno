@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Portal Inicio</title>
+    <title>Portal Interno</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -74,16 +74,16 @@
                 <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                   <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                      <a class="page-scroll" href="#home">Inicio</a>
+                      <a class="page-scroll" href="#home" onclick="clickOtroMenu()">Inicio</a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="#blog">Anuncios</a>
+                      <a class="page-scroll" href="#blog" onclick="clickOtroMenu()">Anuncios</a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="#team">Cumpleaños</a>
+                      <a class="page-scroll" href="#team" onclick="clickOtroMenu()">Cumpleaños</a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="#pricing">Documentos</a>
+                      <a class="page-scroll" href="#pricing" onclick="clickOtroMenu()">Documentos</a>
                     </li>
                     <li id="boton_menu" class="dropdown" onclick="clickMenu()">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú<span class="caret"></span></a>
@@ -171,6 +171,7 @@
           {{$variable = $variable +1}}
           @endif
           @foreach ($imagenes_slides as $imagen_slide)
+           
             @if(is_null($imagen_slide->imagen))
               <img src="img/slider/slider_nuevo_documento.jpg" alt="slider_nuevo_documento" title="{{'#slider-direction-'.$variable}}" />
             @else

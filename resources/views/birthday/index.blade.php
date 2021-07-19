@@ -7,7 +7,11 @@
 @endsection
 @section('content')
 <div class="container"> 
-    <a class="btn btn-primary" href="{{url('publication')}}">Ver Publicaciones</a>
+    <a class="btn btn-primary" href="{{url('publication/create')}}">Crear Nueva Publicacion</a>
+    <a class="btn btn-primary" href="{{url('publication')}}" style="background-color: #cf3b79; color: white; border-color: #cf3b79 ">Ver Publicaciones</a>
+    @if (Auth::user()->rol == "administrador")
+    <a class="btn btn-usuarios btn-primary" style="float: right" href="{{url('user')}}">administra usuarios</a>
+      @endif
     <br>
     <br>
 

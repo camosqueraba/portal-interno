@@ -6,6 +6,12 @@ function clickMenu() {
       document.getElementById("contenedor_opciones_menu").style.visibility = "visible";
     } 
 }
+function clickOtroMenu() {
+  if (document.getElementById("contenedor_opciones_menu").style.visibility == "visible"){
+    document.getElementById("contenedor_opciones_menu").style.visibility = "hidden";
+  }
+  
+}
  enlaces = document.getElementsByClassName("enlace-card");
  numero_enlaces = enlaces.length;
  console.log(numero_enlaces);

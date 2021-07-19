@@ -1769,7 +1769,7 @@ div#preloader {
 
 .contact-content {
   padding: 100px;
-  background: #000 none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.555) none repeat scroll 0 0;
 }
 
 .contact-content-right {
@@ -2014,6 +2014,8 @@ div#preloader {
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
+  
+  
 }
 
 .header-bg.home-2 {

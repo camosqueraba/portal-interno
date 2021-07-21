@@ -85,7 +85,7 @@
                     <li>
                       <a class="page-scroll" href="#pricing" onclick="clickOtroMenu()">Documentos</a>
                     </li>
-                    <li id="boton_menu" class="dropdown" onclick="clickMenu()">
+                    <li id="boton_menus" class="dropdown" onclick="clickMenu()">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú<span class="caret"></span></a>
                       <!--<ul class="dropdown-menu" role="menu">-->
 
@@ -543,24 +543,22 @@
               <div class="footer-content">
                 <div class="footer-head">
                   <div class="footer-logo">
-                    <h2>Departamento de Tecnologia</h2>
+                    <h2 >Departamento de Tecnologia</h2>
                   </div>
 
                   <p></p>
                   <div class="footer-icons">
                     <ul>
                       <li>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/perfectbodymc/"><i class="fa fa-facebook"></i></a>
                       </li>
                       <li>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="https://twitter.com/perfectbodymc"><i class="fa fa-twitter"></i></a>
                       </li>
                       <li>
-                        <a href="#"><i class="fa fa-google"></i></a>
+                        <a href="https://www.instagram.com/perfectbodymc"><i class="fa fa-instagram"></i></a>
                       </li>
-                      <li>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                      </li>
+                    
                     </ul>
                   </div>
                 </div>
@@ -588,7 +586,7 @@
                 <div class="footer-head">
                   <h4>Instagram</h4>
                   <div class="flicker-img">
-                    <a href="#"><img src="img/portfolio/1.jpg" alt=""></a>
+                    <a href="#"><img src="//192.168.1.223\Public\Tecnologia\imagenes\Lumbago1.jpg" alt=""></a>
                     <a href="#"><img src="img/portfolio/2.jpg" alt=""></a>
                     <a href="#"><img src="img/portfolio/3.jpg" alt=""></a>
                     <a href="#"><img src="img/portfolio/4.jpg" alt=""></a>

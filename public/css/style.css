@@ -2497,12 +2497,24 @@ span.email-notes {
 }
 
 
-#boton_menu:hover > div{
-  visibility: visible;
-  text-align: center;
-
+ #text-gradient{
+  background-size: cover;
+  color: transparent;
+  background-clip: text;
+  animation: color 3s linear infinite; 
+  background-size: 500%;
+  background-image: linear-gradient(to left, #FFD700, #7B68EE, #3498db, #2ecc71, #FFD700);    
+   
 }
+@keyframes color {
+  from {
+      background-position: 0% 50%;
+  }
 
+  to {
+      background-position: 100% 50%;
+  }
+}
 .contenedor_opciones_menu{
 margin-top: 0px;
 visibility: hidden;

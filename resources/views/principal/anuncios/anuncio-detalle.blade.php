@@ -75,11 +75,8 @@
               <!-- Collect the nav links, forms, and other content forr toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
-                  <li class="active">
-                    <a class="page-scroll" href="#home">Inicio</a>
-                  </li>
                   <li>
-                    <a class="page-scroll" href="{{url('/login')}}">Administrar Anuncios</a>
+                    <a class="page-scroll" href="{{url('/login')}}" style="color: #003660">Administrar Anuncios</a>
                   </li>
                   <!--
                   

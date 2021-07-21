@@ -146,9 +146,9 @@
             {{ __('Publicar') }}
         </button>
     </div>
-    <div class="col-md-2">
+      <div class="col-md-2">
         <a class="btn btn-success" href="{{url('publication')}}">
             {{ __('Regresar') }}
         </a>
-    </div>
+    </div>  
 </div>

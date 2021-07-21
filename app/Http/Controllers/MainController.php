@@ -77,7 +77,7 @@ class MainController extends Controller
 
         $imagenes_slides = Publication::select('imagen')
                                         ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
-                                        ->orderBy('created_at')
+                                        ->orderBy('created_at', 'desc')
                                         ->take(3)
                                         ->get();
         

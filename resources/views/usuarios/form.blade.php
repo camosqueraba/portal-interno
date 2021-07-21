@@ -86,18 +86,20 @@
 </div>
 
 <div class="form-group row mb-0">
-    <div class="col-md-6 offset-md-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
         <button type="submit" class="btn btn-primary">
             {{ __('Registrarse') }}
         </button>
     </div>
-</div>
-<div class="form-group row mb-0">
-    <div class="col-md-6 offset-md-4">
+    <div class="col-md-2">
         <a class="btn btn-success" href="{{url('user')}}">
             {{ __('Regresar') }}
         </a>
     </div>
 </div>
+
+   
+
                  
               

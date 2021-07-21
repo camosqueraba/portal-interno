@@ -38,21 +38,23 @@
                                        
                     <form id="form" style="display: none;" method="POST" action="{{ url('publication') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form'); 
+                        @include('publication.form')
                     </form>
 
                     <form id="form_documento" style="display: none;" method="POST" action="{{ url('publication') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form_documento'); 
+                        @include('publication.form_documento') 
                     </form>
 
                     <form id="form_cumpleanios" style="display: none;" method="POST" action="{{ url('birthday') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form_cumpleanios'); 
+                        @include('publication.form_cumpleanios')
                     </form>
-
-                    <a class="btn btn-success" href="{{url('publication')}}" style="margin-left: 800px">
-                        {{ __('Regresar') }} </a>
+                    <div class="col-md-2">
+                        <a id="btn-regresar" class="btn btn-success" href="{{url('publication')}}" style="margin-left: 320px">
+                            {{ __('Regresar') }} </a>
+                    </div>
+                   
                 </div>
                 
             </div>

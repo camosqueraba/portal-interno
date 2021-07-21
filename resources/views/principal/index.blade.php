@@ -570,12 +570,12 @@
                 <div class="footer-head">
                   <h4>información</h4>
                   <p>
-                    Soporte para la herramienta SIOS, reporte de incidentes con equipos tecnologicos y apoyo en seguridad.
+                    Soporte para la herramienta SIOS, reporte de incidentes con equipos tecnologicos y apoyo en seguridad informática.
                   </p>
                   <div class="footer-contacts">
                     <p><span>Tel:</span> (5)4237101 ext 6020</p>
                     <p><span>Email:</span> tecnologia@perfectbody.com.co</p>
-                    <p><span>Horario de atención:</span> 7:30am-12:00am / 2:00pm-6:00pm</p>
+                    <p><span>Horario de atención:</span>Lunes a Viernes 7:30am-12:00am / 2:00pm-6:00pm, Sabados 8:00am - 12:00am</p>
                   </div>
                 </div>
               </div>
@@ -584,14 +584,14 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="footer-content">
                 <div class="footer-head">
-                  <h4>Instagram</h4>
+                  <h4>Nuestro trabajo</h4>
                   <div class="flicker-img">
-                    <a href="#"><img src="//192.168.1.223\Public\Tecnologia\imagenes\Lumbago1.jpg" alt=""></a>
-                    <a href="#"><img src="img/portfolio/2.jpg" alt=""></a>
-                    <a href="#"><img src="img/portfolio/3.jpg" alt=""></a>
-                    <a href="#"><img src="img/portfolio/4.jpg" alt=""></a>
-                    <a href="#"><img src="img/portfolio/5.jpg" alt=""></a>
-                    <a href="#"><img src="img/portfolio/6.jpg" alt=""></a>
+                    <a href="#"><img src="img/portfolio/cpc.jpg" alt=""></a>
+                    <a href="#"><img src="img/portfolio/gdocumental.jpg" alt=""></a>
+                    <a href="#"><img src="img/portfolio/incidencias.jpg" alt=""></a>
+                    <a href="#"><img src="img/portfolio/inspeccion.jpg" alt=""></a>
+                   {{--   <a href="#"><img src="img/portfolio/5.jpg" alt=""></a>
+                    <a href="#"><img src="img/portfolio/6.jpg" alt=""></a>  --}}
                   </div>
                 </div>
               </div>

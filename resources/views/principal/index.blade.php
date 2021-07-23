@@ -20,11 +20,11 @@
 
     <!-- Libraries CSS Files -->
     <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
-    <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
-    <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+    {{--  <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+    <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">  --}}
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/venobox/venobox.css" rel="stylesheet">
+    {{--  <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/venobox/venobox.css" rel="stylesheet">  --}}
 
     <!-- Nivo Slider Theme -->
     <link href="css/nivo-slider-theme.css" rel="stylesheet">
@@ -649,8 +649,8 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  --}}
 <!------ Include the above in your HEAD tag ---------->
 
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
-     <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script> 
+    {{--  <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
+     <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>   --}}
   </body>
 
   </html>

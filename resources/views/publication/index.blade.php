@@ -51,19 +51,14 @@
                 <td>
                     <img src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="{{$publication->imagen}}">
                 </td>
-                  
-                @endif
-                @if (!is_null($publication->documento))
-                
-                    
-                    <td><div class="celda-documento">{{$publication->documento}}</div></td>                  
-                  
-                @endif
-                @if (!is_null($publication->video))
-                
-                    
-                        <td><div class="celda-enlace">{{$publication->video}}</div></td>                 
-                
+                @elseif(!is_null($publication->documento))
+                <td>
+                    <div class="celda-documento">{{$publication->documento}}</div>
+                </td>                  
+                @elseif (!is_null($publication->video))
+                <td>
+                    <div class="celda-enlace">{{$publication->video}}</div>
+                </td>                 
                 @endif
                 
 

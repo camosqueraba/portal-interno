@@ -102,7 +102,7 @@
                             <i class="fa fa-file-text fa-fw"></i> Admisiones
                           </a>
                           
-                          <a id="enlace_menu" class="enlace_menu"href="http://192.168.1.95/CITAS/index.aspx">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/CITAS/index.aspx" target="_blank">
                             <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Citas</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/contratacion/Index.aspx" target="_blank">
                             <i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Contratación</a>
@@ -285,8 +285,8 @@
           </div>
           <div class="row">
             <!-- Start Left Blog -->
-            <div class="carousel-wrapper">
-              <div class="carousel" data-flickity>
+            {{--  <div class="carousel-wrapper">
+              <div class="carousel" data-flickity>  --}}
                 @foreach ($anuncios as $anuncio)
                           <!-- Start single blog -->
                           <div class="card tarjeta-anuncio"> 
@@ -324,9 +324,9 @@
                           @endforeach
                       
                 
-            
+           {{--   
               </div>
-            </div>
+            </div>  --}}
            
           </div>
            

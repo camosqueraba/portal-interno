@@ -87,8 +87,12 @@ class MainController extends Controller
                                     ->take(3)
                                     ->get();
         
-        $anuncios = Publication::where('tipo', 'anuncio')
-                                ->orderBy('created_at', 'desc')
+        /*$anuncios = Publication:: where('tipo', 'anuncio')
+                                -> orderBy('created_at', 'desc')
+                                ->take(9)
+                                ->get();*/
+
+        $anuncios = Publication::orderBy('created_at', 'desc')
                                 ->take(9)
                                 ->get();
         

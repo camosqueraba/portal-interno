@@ -66,7 +66,7 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                <a class="navbar-brand page-scroll sticky-logo" href="{{url('/')}}">
                   <!--<h1><span>e</span>Business</h1>-->
                   <!-- Uncomment below iff you prefer to an image logo -->
                   <img src="{{asset('img/logo_perfect.png')}}" alt="perfect_body" title="">

@@ -287,6 +287,7 @@
             <!-- Start Left Blog -->
             {{--  <div class="carousel-wrapper">
               <div class="carousel" data-flickity>  --}}
+                
                 @foreach ($anuncios as $anuncio)
                           <!-- Start single blog -->
                           <div class="card tarjeta-anuncio"> 
@@ -322,7 +323,7 @@
                               </div>
                           </div>
                           @endforeach
-                      
+                          {{ $anuncios->links() }}
                 
            {{--   
               </div>

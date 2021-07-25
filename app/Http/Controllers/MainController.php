@@ -74,17 +74,26 @@ class MainController extends Controller
         $dia_actual = date('d');
         $dia_mes = $dia_actual." de ".$mes;
 
-        $imagenes_slides = Publication::select('imagen')
-                                        ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
-                                        ->orderBy('created_at', 'desc')
-                                        ->take(3)
-                                        ->get();
+        // /* $imagenes_slides = Publication::select('imagen')
+        //                                 ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
+        //                                 ->orderBy('created_at', 'desc')
+        //                                 ->take(3)
+        //                                 ->get(); */
 
-        $datos_slides = Publication::select('id','titulo', 'descripcion', 'link')
-                                    ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
-                                    ->orderBy('created_at', 'desc')
-                                    ->take(3)
-                                    ->get();
+        $slides = Publication::where([['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
+                                         ->orderBy('updated_at', 'desc')
+                                         ->take(3)
+                                         ->get(); 
+        $slides = Publication::where([['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
+                                         ->orderBy('updated_at', 'desc')
+                                         ->paginate(3);                     
+        
+        $datos_slides = $imagenes_slides = $anuncios= $slides;    
+        // $datos_slides = Publication::select('id','titulo', 'descripcion', 'link')
+        //                             ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
+        //                             ->orderBy('created_at', 'desc')
+        //                             ->take(3)
+        //                             ->get();
 
         /*$anuncios = Publication:: where('tipo', 'anuncio')
                                 -> orderBy('created_at', 'desc')
@@ -95,8 +104,16 @@ class MainController extends Controller
                                 ->take(9)
                                 ->get(); */
                                 
-        $anuncios = Publication::orderBy('updated_at', 'desc')
-                                ->paginate(3); 
+        // $anuncios = Publication::orderBy('updated_at', 'desc')
+        //                         ->paginate(3); 
+
+
+
+
+
+
+
+
                                 
         
         $documentos = Publication::where('tipo', 'documento')->orderBy('created_at', 'desc')->take(9)->get();

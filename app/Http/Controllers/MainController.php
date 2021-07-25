@@ -8,15 +8,14 @@ use App\Http\Controllers\ExcelController;
 use App\Models\Birthday;
 use App\Models\Publication;
 use Illuminate\Support\Facades\DB;
-
+use \Illuminate\Database\QueryException;
 use DateTime;
-
-
+use PhpParser\Node\Stmt\TryCatch;
 
 class MainController extends Controller
 {
     public function obtenerNombreMesActual (){
-            
+
         $mes_actual = date('F');
 
         switch ($mes_actual) {
@@ -25,38 +24,38 @@ class MainController extends Controller
                 break;
             case 'February':
                 $nombre_mes_actual = 'Febrero';
-                break;    
+                break;
             case 'March':
                 $nombre_mes_actual = 'Marzo';
-                break;    
+                break;
             case 'April':
                 $nombre_mes_actual = 'Abril';
-                break;    
+                break;
             case 'May':
                 $nombre_mes_actual = 'Mayo';
-                break;    
+                break;
             case 'June':
                 $nombre_mes_actual = 'Junio';
-                break;    
+                break;
             case 'July':
                 $nombre_mes_actual = 'Julio';
-                break;    
+                break;
             case 'August':
                 $nombre_mes_actual = 'Agosto';
-                break;    
+                break;
             case 'September':
                 $nombre_mes_actual = 'Septiembre';
-                break;    
+                break;
             case 'October':
                 $nombre_mes_actual = 'Octubre';
-                break;    
+                break;
             case 'November':
                 $nombre_mes_actual = 'Noviembre';
-                break;    
+                break;
             case 'December':
                 $nombre_mes_actual = 'Diciembre';
-                break;    
-                                                                                                                                                                                                                                                                                                 
+                break;
+
             default:
                 # code...
                 break;
@@ -80,13 +79,13 @@ class MainController extends Controller
                                         ->orderBy('created_at', 'desc')
                                         ->take(3)
                                         ->get();
-        
+
         $datos_slides = Publication::select('id','titulo', 'descripcion', 'link')
                                     ->where([/*['tipo','=','anuncio'],*/['fecha_inicio','<=',$fecha],['fecha_fin', '>',$fecha]])
                                     ->orderBy('created_at', 'desc')
                                     ->take(3)
                                     ->get();
-        
+
         /*$anuncios = Publication:: where('tipo', 'anuncio')
                                 -> orderBy('created_at', 'desc')
                                 ->take(9)
@@ -95,28 +94,43 @@ class MainController extends Controller
         $anuncios = Publication::orderBy('updated_at', 'desc')
                                 ->take(9)
                                 ->get();
-        
+
         $documentos = Publication::where('tipo', 'documento')->orderBy('created_at', 'desc')->take(9)->get();
-        
+
         $consulta_cumpleanios = "SELECT day(FechaNac) Dia , E.Nombre1 +' '+ E.Apellido1+' '+  E.Apellido2 AS Empleado
             FROM nEmpleados E
             JOIN nContratos C ON E.IdEmpleado=C.IdEmpleado
             WHERE MONTH(FechaNac)= $mes_actual AND C.Activo='1'
             ORDER BY Dia";
-              
-        $cumpleanios = DB::connection('sqlsrv')->select($consulta_cumpleanios);
-        
+
+        try{
+            $cumpleanios = DB::connection('sqlsrv')->select($consulta_cumpleanios);
+        }
+        catch(QueryException $ex){
+            //dd($ex->getMessage());
+            //return view('principal.index')->with('mensaje', $ex->getMessage() );
+            $cumpleanios = array();
+        }
+
+
        /* $cumpleanos_con_fotos = Birthday::select('*')
                                         ->where('MONTH(fecha)','=',$mes_actual)
                                          ->get(); */
         $cumpleanos_con_fotos = Birthday::whereMonth('fecha',$mes_actual)->orderBy('fecha')->get();
-                                        
-         
+
+
         $excel_controller = new ExcelController();
-        $cumpleanios_n_n = $excel_controller->buscarCumpleanieros();
-        
-        $todos_cumpleanios = array_merge($cumpleanios, $cumpleanios_n_n);
-        
+        try {
+            //code...
+            $cumpleanios_otros = $excel_controller->buscarCumpleanieros();
+        } catch (\Throwable $th) {
+            //throw $th;
+            $cumpleanios_otros = array();
+        }
+        //$cumpleanios_n_n = $excel_controller->buscarCumpleanieros();
+
+        $todos_cumpleanios = array_merge($cumpleanios, $cumpleanios_otros);
+
 
         $todos_cumpleanios = $this->ordernarCumpleanios($todos_cumpleanios);
         $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($todos_cumpleanios);
@@ -139,7 +153,7 @@ class MainController extends Controller
         $dia_actual = date('d');
         $numero_cumpleanieros = 0;
         $cumpleanieros = array();
-        
+
         foreach($todos_cumpleanios as $cumpleanio){
 
             if ($cumpleanio->Dia == $dia_actual ){
@@ -166,6 +180,6 @@ class MainController extends Controller
                 }
             }
         }
-        return $todos_cumpleanios; 
+        return $todos_cumpleanios;
     }
 }

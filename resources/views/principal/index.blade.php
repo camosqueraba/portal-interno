@@ -35,7 +35,7 @@
 
     <!-- Responsive Stylesheet File -->
     <link href="css/responsive.css" rel="stylesheet">
-    
+
 
     <!-- =======================================================
       Theme Name: eBusiness
@@ -65,7 +65,7 @@
                   </button>
                   <!-- Brand -->
                   <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                    
+
                     <!-- Uncomment below if_ you prefer to use_ an image logo -->
                     <img src="img/logo_perfect.png" alt="logo perfectbody" title="">
                   </a>
@@ -92,7 +92,7 @@
                         <div id="contenedor_opciones_menu" class="contenedor_opciones_menu dropdown-content">
                           <h3 class="titulo_enlace_menu">
                              <strong>
-                              
+
                             </strong>
                           </h3>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/ActivosFijos/index.aspx" target="_blank">
@@ -101,7 +101,7 @@
                           <a id="enlace_menu" class="enlace_menu"  href="http://192.168.1.95/ADMISIONES/index.aspx" target="_blank">
                             <i class="fa fa-file-text fa-fw"></i> Admisiones
                           </a>
-                          
+
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/CITAS/index.aspx" target="_blank">
                             <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Citas</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/contratacion/Index.aspx" target="_blank">
@@ -120,7 +120,7 @@
                             <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>  Orden Externa</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.100:8080/oviyam2/" target="_blank">
                             <i class="fa fa-hospital-o fa-fw" aria-hidden="true"></i>  RX-Oviyam</a>
-                          
+
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/SIOS/" target="_blank">
                             <i class="fa fa-user-md fa-fw" aria-hidden="true"></i>  SIOS</a>
                           <h3 class="titulo_enlace_menu">
@@ -129,7 +129,7 @@
                              </strong>
                           </h3>
                           <a id="enlace_menu" class="enlace_menu" href="https://www.colmenaseguros.com/Paginas/EncuestaCovid.aspx" target="_blank">
-                            <i class="fa fa-bar-chart-o fa-fw" aria-hidden="true"></i>  Encuesta Colmena</a>   
+                            <i class="fa fa-bar-chart-o fa-fw" aria-hidden="true"></i>  Encuesta Colmena</a>
                           <a id="enlace_menu" class="enlace_menu" href="https://drive.google.com/drive/folders/15VjXdXO1VjGVTE-TJrNMcfFSWxHn741r?usp=sharing" target="_blank">
                             <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>  Fichas INS
                           </a>
@@ -165,21 +165,23 @@
         <div id="ensign-nivoslider" class="slides">
           <img src="img/slider/fondo_perfect.jpg" alt="" title="#slider-direction-0" />
           {{$variable = 1}}
-          
-          @if(count($cumpleanieros_hoy)>0)
-          <img src="img/slider/tarjeta-cumpleanos.jpg" alt="" title="{{'#slider-direction-'.$variable}}" />
-          {{$variable = $variable +1}}
+
+          @if($cumpleanieros_hoy == NULL)
+            @if(count($cumpleanieros_hoy)>0))
+                <img src="img/slider/tarjeta-cumpleanos.jpg" alt="" title="{{'#slider-direction-'.$variable}}" />
+                {{$variable = $variable +1}}
+            @endif
           @endif
           @foreach ($imagenes_slides as $imagen_slide)
-           
+
             @if(is_null($imagen_slide->imagen))
               <img src="img/slider/slider_nuevo_documento.jpg" alt="slider_nuevo_documento" title="{{'#slider-direction-'.$variable}}" />
             @else
               <img src="{{asset('storage').'/'.$imagen_slide->imagen}}" alt="" title="{{'#slider-direction-'.$variable}}" />
-            @endif  
+            @endif
           {{$variable = $variable +1}}
           @endforeach
-          
+
         </div>
 
         <!-- direction 0 -->
@@ -207,7 +209,7 @@
             </div>
           </div>
         </div>
-       
+
         {{$variable = $variable +1}}
         @if(count($cumpleanieros_hoy)>0)
           <div id="{{'slider-direction-'.$variable}}" class="slider-direction slider-one">
@@ -219,7 +221,7 @@
                     <div class="layer-1-1 hidden-xs wow slideInDown" style="padding-top=100px;" data-wow-duration="2s" data-wow-delay=".2s">
                       <!--<h2 class="title1 nombre-cumpleaniero">{{$dia_mes}}</h2>-->
                       @foreach ($cumpleanieros_hoy as $cumpleaniero )
-                      <h2 class="title1 nombre-cumpleaniero">{{$cumpleaniero}}</h2>    
+                      <h2 class="title1 nombre-cumpleaniero">{{$cumpleaniero}}</h2>
                       @endforeach
                     </div>
                     <!-- layer 2 -->
@@ -239,7 +241,7 @@
           {{$variable = $variable +1}}
           @endif
         @foreach ($datos_slides as $dato_slide)
-        
+
         <div id="{{'slider-direction-'.$variable}}" class="slider-direction slider-one">
           <div class="container">
             <div class="row">
@@ -268,7 +270,7 @@
         </div>
         {{$variable = $variable + 1}}
         @endforeach
-        
+
       </div>
     </div>
     <!-- Start Blog Area -->
@@ -290,7 +292,7 @@
                 
                 @foreach ($anuncios as $anuncio)
                           <!-- Start single blog -->
-                          <div class="card tarjeta-anuncio"> 
+                          <div class="card tarjeta-anuncio">
                               <div class="card-header">
                               @if(is_null($anuncio->imagen))
                               <img src="img/slider/slider_nuevo_documento.jpg" alt="slider_nuevo_documento" title="{{'#slider-direction-'.$variable}}" />
@@ -298,9 +300,9 @@
                               <img src="{{asset('storage').'/'.$anuncio->imagen}}" alt="rover" />
                               @endif
                               </div>
-                          
+
                               <div class="card-body">
-                                  
+
                                   <span class="date-type" style="display:inline;">
                                   <i class="fa fa-calendar"></i>{{$anuncio->fecha_inicio}} / {{$anuncio->fecha_fin}}
                                   </span>
@@ -315,10 +317,10 @@
                                       {{$anuncio->descripcion}}
                                   </p>
                                   </div>
-                                  
+
                                   <div class="user">
                                   <a href="{{url('anuncios/'. $anuncio->id)}}" target="_blank" class="tag tag-blue">Mas info</a>
-                                  <a id ="{{$anuncio->id}}-enlace-mini-anuncio" href="{{$anuncio->link}}" target="_blank" class="tag tag-blue enlace-card">Ver enlace</a> 
+                                  <a id ="{{$anuncio->id}}-enlace-mini-anuncio" href="{{$anuncio->link}}" target="_blank" class="tag tag-blue enlace-card">Ver enlace</a>
                                   </div>
                               </div>
                           </div>
@@ -328,14 +330,14 @@
            {{--   
               </div>
             </div>  --}}
-           
+
           </div>
-           
-          
-          
-          
+
+
+
+
           <!--</div>-->
-          
+
         </div>
       </div>
     </div>
@@ -365,7 +367,7 @@
     <!-- End Wellcome Area -->
 
     <!-- Start team Area -->
-    
+
     <!-- End Team Area -->
 
     <!-- cumpleaños mes -->
@@ -391,16 +393,16 @@
               @endforeach
             </div>
           </div>
-            
+
           <div class="col-md-7 col-sm-7 col-xs-12">
             <div class="team-top">
               @foreach ($cumpleanos_con_fotos as $cumpleano_con_foto )
               <div class="col-md-3 col-sm-3 col-xs-12 single-team-member-contenedor">
                <div class="single-team-member">
                   <div class="team-img">
-                    
+
                       <img class="foto-cumpleaños" src="{{asset('storage').'/'.$cumpleano_con_foto->foto}}" alt="">
-                    
+
                     <!--
                     <div class="team-social-icon text-center">
                       <ul>
@@ -431,13 +433,13 @@
                 </div>
                </div>
               @endforeach
-              
-             
+
+
             </div>
           </div>
-           
+
           </div> <!--para poder centrar-->
-          
+
         </div>
       </div>
     </div>
@@ -462,7 +464,7 @@
               <h3>Encuentre aquí los documentos</h3>
               <div class=".table-responsive">
                 <table class="table">
-                  
+
                   <thead>
                     <tr>
                       <th scope="col">Publicación</th>
@@ -481,7 +483,7 @@
                        $tipo = pathinfo($documento->documento)
                        ?>
                       @if ($tipo['extension']=="xlsx"|| $tipo['extension']=="xls" )
-                        
+
                       <td class="celda-cumpleanios"><i class="fa fa-file-excel-o fa-2x" style="color: green"> </i></td>
                       @endif
                       @if ($tipo['extension']=="pdf")
@@ -559,7 +561,7 @@
                       <li>
                         <a href="https://www.instagram.com/perfectbodymc"><i class="fa fa-instagram"></i></a>
                       </li>
-                    
+
                     </ul>
                   </div>
                 </div>
@@ -629,15 +631,15 @@
     <!-- JavaScript Libraries -->
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    
+
     {{--<script src="lib/owlcarousel/owl.carousel.min.js"></script>--}}
-   <script src="lib/venobox/venobox.min.js"></script>  
+   <script src="lib/venobox/venobox.min.js"></script>
     {{-- <script src="lib/knob/jquery.knob.js"></script>--}}
    <script src="lib/wow/wow.min.js"></script>
      {{-- <script src="lib/parallax/parallax.js"></script>--}}
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-    {{--<script src="lib/appear/jquery.appear.js"></script>--}} 
+    {{--<script src="lib/appear/jquery.appear.js"></script>--}}
    {{--  <script src="lib/isotope/isotope.pkgd.min.js"></script>  --}}
 
     <!-- Contact Form JavaScript File -->

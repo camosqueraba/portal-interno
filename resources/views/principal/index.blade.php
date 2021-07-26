@@ -387,7 +387,7 @@
               <!--<div class="list-group-item list-group-item-action ">-->
               <div>
                 <!--<span class="badge badge-pill badge-primary pull-right">{{$cumpleanio->Dia}}</span>-->
-                <h4 style="display: inline-block; color:#003660; margin-right:15px;">{{$cumpleanio->Dia}}</h3>
+                <h4 style="display: inline-block; color:#e82a7a; margin-right:15px; font-weight: 800;">{{$cumpleanio->Dia}}</h3>
                 <h6 style="display: inline-block; font-size: 14px">{{$cumpleanio->Empleado}}</h6>
               </div>
               @endforeach
@@ -427,7 +427,8 @@
                   </div>
                   <div class="team-content text-center">
                     <h6 style="text-transform: capitalize;"><strong>{{$cumpleano_con_foto->nombre}}</strong></h6>
-                    <p>{{$cumpleano_con_foto->fecha}}</p>
+                    
+                    <p style="font-size: 15px; color: #e82a7a; font-weight: 800">{{date_format(new DateTime($cumpleano_con_foto->fecha), 'd')}}</p>
                     <p>{{$cumpleano_con_foto->area}}</p>
                   </div>
                 </div>

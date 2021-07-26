@@ -311,7 +311,8 @@ div#preloader {
 }
 .main-menu ul.navbar-nav li.active > a::after {
   border: 1px solid #fff;
-  border: 1px solid #fff;
+  /*border: 1px solid #fff; */
+  /*border: 1px solid #e82a7a;*/
   bottom: 0px;
   content: "";
   left: 0;
@@ -446,7 +447,7 @@ div#preloader {
 }
 .stick .main-menu ul.navbar-nav li.active > a::after {
   /*border: 1px solid #fff;*/
-  border: 1px solid #fff;
+  border: 1px solid #e82a7a;
   bottom: 0px;
   content: "";
   left: 0;

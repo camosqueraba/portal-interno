@@ -13,8 +13,8 @@ class ExcelController extends Controller
 
         # Recomiendo poner la ruta absoluta si no está junto al script
         # Nota: no necesariamente tiene que tener la extensión XLSX
-        $rutaArchivo = "..\cumpleaniosNyN.xlsx";
-        //$rutaArchivo = "//192.168.1.223/Public/Tecnologia/Aplicaciones_PBMC/portal-interno/cumpleaniosNyN.xlsx";
+        $rutaArchivo = "..\cumpleaniosOtros.xlsx";
+        //$rutaArchivo = "//192.168.1.223/Public/Tecnologia/Aplicaciones_PBMC/portal-interno/cumpleaniosOtros.xlsx";
         $documento = IOFactory::load($rutaArchivo);
 
         //return $documento;

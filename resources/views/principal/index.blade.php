@@ -221,7 +221,7 @@
                     <div class="layer-1-1 hidden-xs wow slideInDown" style="padding-top=100px;" data-wow-duration="2s" data-wow-delay=".2s">
                       <!--<h2 class="title1 nombre-cumpleaniero">{{$dia_mes}}</h2>-->
                       @foreach ($cumpleanieros_hoy as $cumpleaniero )
-                      <h2 class="title1 nombre-cumpleaniero">{{$cumpleaniero}}</h2>
+                      <h2 class="title1 nombre-cumpleaniero" style="color: #e82a7a">{{$cumpleaniero}}</h2>
                       @endforeach
                     </div>
                     <!-- layer 2 -->

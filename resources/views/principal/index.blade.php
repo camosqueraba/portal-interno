@@ -166,7 +166,7 @@
           <img src="img/slider/fondo_perfect.jpg" alt="" title="#slider-direction-0" />
           {{$variable = 1}}
 
-          @if($cumpleanieros_hoy == NULL)
+          @if($cumpleanieros_hoy != NULL)
             @if(count($cumpleanieros_hoy)>0))
                 <img src="img/slider/tarjeta-cumpleanos.jpg" alt="" title="{{'#slider-direction-'.$variable}}" />
                 {{$variable = $variable +1}}

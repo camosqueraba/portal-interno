@@ -95,20 +95,25 @@
 
                             </strong>
                           </h3>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/ActivosFijos/index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /ActivosFijos/index.aspx" target="_blank">
                             <i class="fa fa-bar-chart fa-fw"></i> Activos Fijos
                           </a>
-                          <a id="enlace_menu" class="enlace_menu"  href="http://192.168.1.95/ADMISIONES/index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu"  href="http://192.168.1.95
+                          /ADMISIONES/index.aspx" target="_blank">
                             <i class="fa fa-file-text fa-fw"></i> Admisiones
                           </a>
 
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/CITAS/index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /CITAS/index.aspx" target="_blank">
                             <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Citas</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/contratacion/Index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /contratacion/Index.aspx" target="_blank">
                             <i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Contratación</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/SST_Perfect-Body/public/" target="_blank">
                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>  C.P.C.PBMC</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/gerencial/index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /gerencial/index.aspx" target="_blank">
                             <i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>  Gerencial</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/Gestion_Documental/public/login" target="_blank">
                             <i class="fa fa-archive fa-fw" aria-hidden="true"></i>  Gestion Documental</a>
@@ -116,12 +121,14 @@
                             <i class="fa fa-edit fa-fw" aria-hidden="true"></i>  Incidencias</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/Inspeccion_perfect_Body/public/login" target="_blank">
                             <i class="fa fa-clipboard fa-fw" aria-hidden="true"></i>  Inspección</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/ORDENES/index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /ORDENES/index.aspx" target="_blank">
                             <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>  Orden Externa</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.100:8080/oviyam2/" target="_blank">
                             <i class="fa fa-hospital-o fa-fw" aria-hidden="true"></i>  RX-Oviyam</a>
 
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/SIOS/" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
+                          /SIOS/" target="_blank">
                             <i class="fa fa-user-md fa-fw" aria-hidden="true"></i>  SIOS</a>
                           <h3 class="titulo_enlace_menu">
                             <strong>
@@ -230,9 +237,14 @@
                     </div>
                     <!-- layer 3 -->
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                      <a class="ready-btn right-btn page-scroll" style="margin-bottom: 20px" href="#team">Ver Cumpleaños {{$mes}}</a>
+                      <a class="ready-btn right-btn page-scroll" style="margin-bottom: 20px" href="#blog">Ver Cumpleaños {{$mes}}</a>
                       <!--<a class="ready-btn page-scroll" href="blog">MAS INFO</a>-->
+
                     </div>
+                    <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                    <a class="ready-btn right-btn page-scroll" href="#blog">Todos los anuncios</a>
+                    <!--<a class="ready-btn page-scroll" href="blog">MAS INFO</a>-->
+                  </div>
                   </div>
                 </div>
               </div>

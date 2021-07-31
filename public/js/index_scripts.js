@@ -10,8 +10,6 @@ function clickMenu() {
       document.getElementById("contenedor_opciones_menu").style.visibility = "visible";
       control_next = document.getElementsByClassName("nivo-nextNav");
       control_next[0].style.right = "230px";
-     
-
     } 
 }
 function clickOtroMenu() {

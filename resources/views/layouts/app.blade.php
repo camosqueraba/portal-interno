@@ -13,10 +13,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/form_create.js') }}" defer></script>
+    <script src="{{ asset('js/form_create.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
+    <script src="{{asset('ckeditor/build/ckeditor.js')}}"></script>
     <script>
        $(document).ready(function() {
         $('#tabla_anuncios').DataTable(); } );
@@ -77,7 +78,7 @@
                             @else
 
                             <li class="nav-item dropdown">
-                               
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    {{ Auth::user()->username }}
                                 </a>
@@ -107,6 +108,7 @@
 
 
     @yield('js')
+    @yield('ck_editor')
 
 </body>
 </html>

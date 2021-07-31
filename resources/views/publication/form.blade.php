@@ -35,10 +35,10 @@
     <label for="contenido" class="col-md-4 col-form-label text-md-right">{{ __('Contenido') }}</label>
 
     <div class="col-md-6">
-      {{--<input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " required autocomplete="contenido">--}}  
+      {{--<input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " required autocomplete="contenido">--}}
 
-        <textarea id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " required autocomplete="contenido"></textarea
-        
+        <textarea id="contenido" type="text" class="form-control" @error('contenido') is-invalid @enderror name="contenido"  required autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
+
         @error('contenido')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -51,12 +51,12 @@
     <label for="imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
     @if (@isset($publication->imagen))
         <img class="col-md-3"src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="$publication->imagen">
-        
+
     @endif
-        
+
     <div class="col-md-3">
-        
-        
+
+
         <input id="imagen" type="file" class="form-control @error('imagen') is-invalid @enderror" name="imagen"  autocomplete="">
 
         @error('imagen')
@@ -71,7 +71,7 @@
     <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
 
     <div class="col-md-6">
-        
+
         <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video"  autocomplete="video">
 
         @error('video')
@@ -86,7 +86,7 @@
     <label for="documento" class="col-md-4 col-form-label text-md-right">{{ __('Documento') }}</label>
 
     <div class="col-md-6">
-        
+
         <input id="documento" type="file" class="form-control @error('documento') is-invalid @enderror" name="documento"  autocomplete="video">
 
         @error('documento')
@@ -142,9 +142,9 @@
 
 <div class="form-group row mb-0">
     <div class="col-md-4"></div>
-    
+
     <div class="col-md-2">
-        <button type="submit" class="btn btn-primary" > 
+        <button type="submit" class="btn btn-primary" >
             {{ __('Publicar') }}
         </button>
     </div>
@@ -152,5 +152,70 @@
         <a class="btn btn-success" href="{{url('publication')}}">
             {{ __('Regresar') }}
         </a>
-    </div>  
+    </div>
 </div>
+
+@section('ck_editor')
+
+{{-- <script type="text/javascript">
+    /* $(document).ready(function () {
+        $('#contenido').ckeditor();
+    }); */
+
+    ClassicEditor
+        .create(document.querySelector('#contenido'))
+        .catch(error => {
+            console.error(error);
+        }); --}}
+
+        <script>ClassicEditor
+				.create( document.querySelector( '#contenido' ), {
+
+				toolbar: {
+					items: [
+						'heading',
+						'fontSize',
+						'bold',
+						'alignment',
+						'link',
+						'bulletedList',
+						'numberedList',
+						'|',
+						'outdent',
+						'indent',
+						'|',
+						'blockQuote',
+						'insertTable'
+					]
+				},
+				language: 'es',
+				table: {
+					contentToolbar: [
+						'tableColumn',
+						'tableRow',
+						'mergeTableCells'
+					]
+				},
+					licenseKey: '',
+
+
+
+				} )
+				.then( editor => {
+					window.editor = editor;
+
+
+
+
+				} )
+				.catch( error => {
+					console.error( 'Oops, something went wrong!' );
+					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+					console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
+					console.error( error );
+				} );
+
+</script>
+
+</html>
+@endsection

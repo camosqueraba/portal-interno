@@ -163,7 +163,7 @@ class MainController extends Controller
 
     public function show($id){
 
-        $anuncio = Publication::select('titulo','descripcion','contenido','imagen','link', 'created_at')->where('id', $id)->first();
+        $anuncio = Publication::select('tipo','titulo','descripcion','contenido','imagen','link', 'created_at', 'usuario_nombre')->where('id', $id)->first();
         return view('principal.anuncios.anuncio-detalle', compact('anuncio'));
         //return response()->json($anuncio);
 

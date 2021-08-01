@@ -68,6 +68,9 @@
                 <td>{{$publication->fecha_inicio}}</td>
                 <td>{{$publication->fecha_fin}}</td>
                 <td class="">
+                    <a class="btn btn-info d-inline" href="{{url('anuncios/'.$publication->id)}}">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
                     <a class="btn btn-success d-inline" href="{{url('publication/'.$publication->id.'/edit')}}">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>

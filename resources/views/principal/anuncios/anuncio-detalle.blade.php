@@ -129,7 +129,7 @@
               <article class="blog-post-wrapper">
                 <h2>{{$anuncio->titulo}}</h2>
                 <div class="entry-meta">
-                  <span class="author-meta"><i class="fa fa-user"> </i> admin </span>
+                  <span class="author-meta"><i class="fa fa-user"> </i>{{$anuncio->usuario_nombre}} </span>
                   <span><i class="fa fa-clock-o"></i>{{ $anuncio->created_at}}</span>
                   
                   <!--<span><i class="fa fa-comments-o"></i> <a href="#">6 comments</a></span>-->
@@ -147,11 +147,20 @@
                
                 <div class="post-information">
                   <div class="entry-content">
-                    <p style="font-size: 20px">{{$anuncio->contenido}}</p>
+                    <p style="font-size: 20px; ">{!!$anuncio->contenido!!}</p>
                     
                   </div>
                 </div>
-                <a class="boton-anuncio-enlace" href="{{$anuncio->link}}">{{$anuncio->link}}</a>
+                @if($anuncio->tipo == 'documento')
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}">VER {{$anuncio->titulo}}</a>
+                  
+                @elseif($anuncio->documento == NULL)
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->link}}">SIN ENLACE</a>
+                
+                @else($anuncio->documento != NULL)
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}">{{$anuncio->link}}</a>
+                @endif
+                
               </article>
               <!--
               

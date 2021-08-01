@@ -35,9 +35,9 @@
     <label for="contenido" class="col-md-4 col-form-label text-md-right">{{ __('Contenido') }}</label>
 
     <div class="col-md-6">
-      {{--<input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " required autocomplete="contenido">--}}
+      
 
-        <textarea id="contenido" type="text" class="form-control" @error('contenido') is-invalid @enderror name="contenido"  required autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
+        <textarea id="contenido" type="text" class="form-control" @error('contenido') is-invalid @enderror name="contenido" autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
 
         @error('contenido')
             <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
     <label for="fecha_inicio" class="col-md-4 col-form-label text-md-right">{{ __('Fecha Inicio') }}</label>
 
     <div class="col-md-6">
-        <input id="fecha_" type="date" class="form-control @error('fecha_inicio') is-invalid @enderror" name="fecha_inicio" value="{{ isset($publication->fecha_inicio)?$publication->fecha_inicio:old('fecha_inicio') }}" required autocomplete="fecha_inicio">
+        <input id="fecha_inicio" type="date" class="form-control @error('fecha_inicio') is-invalid @enderror" name="fecha_inicio" value="{{ isset($publication->fecha_inicio)?$publication->fecha_inicio:old('fecha_inicio') }}" required autocomplete="fecha_inicio">
 
         @error('fecha_inicio')
             <span class="invalid-feedback" role="alert">
@@ -129,7 +129,7 @@
     <label for="fecha_fin" class="col-md-4 col-form-label text-md-right">{{ __('Fecha Fin') }}</label>
 
     <div class="col-md-6">
-        <input id="fecha_" type="date" class="form-control @error('fecha_fin') is-invalid @enderror" name="fecha_fin" value="{{ isset($publication->fecha_fin)?$publication->fecha_fin:old('fecha_fin') }}" required autocomplete="fecha_fin">
+        <input id="fecha_fin" type="date" class="form-control @error('fecha_fin') is-invalid @enderror" name="fecha_fin" value="{{ isset($publication->fecha_fin)?$publication->fecha_fin:old('fecha_fin') }}" required autocomplete="fecha_fin">
 
         @error('fecha_fin')
             <span class="invalid-feedback" role="alert">

@@ -107,8 +107,7 @@
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
                           /CITAS/index.aspx" target="_blank">
                             <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Citas</a>
-                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95
-                          /contratacion/Index.aspx" target="_blank">
+                          <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.95/contratacion/Index.aspx" target="_blank">
                             <i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Contratación</a>
                           <a id="enlace_menu" class="enlace_menu" href="http://192.168.1.157:8686/SST_Perfect-Body/public/" target="_blank">
                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>  C.P.C.PBMC</a>
@@ -237,12 +236,12 @@
                     </div>
                     <!-- layer 3 -->
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                      <a class="ready-btn right-btn page-scroll" style="margin-bottom: 20px" href="#blog">Ver Cumpleaños {{$mes}}</a>
+                      <a class="ready-btn right-btn page-scroll" style="margin-bottom: 20px" href="#team">Ver Cumpleaños {{$mes}}</a>
                       <!--<a class="ready-btn page-scroll" href="blog">MAS INFO</a>-->
 
                     </div>
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                    <a class="ready-btn right-btn page-scroll" href="#blog">Todos los anuncios</a>
+                    {{-- <a class="ready-btn right-btn page-scroll" href="#blog">Todos los anuncios</a> --}}
                     <!--<a class="ready-btn page-scroll" href="blog">MAS INFO</a>-->
                   </div>
                   </div>

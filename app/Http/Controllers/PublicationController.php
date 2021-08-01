@@ -17,7 +17,7 @@ class PublicationController extends Controller
     public function index()
     {
         //
-        $datos = Publication::all();
+        $datos = Publication::orderBy('created_at', 'desc')->get();
         return view('publication.index',compact('datos'));
         //$publications = Publication::latest()->paginate(5);
 

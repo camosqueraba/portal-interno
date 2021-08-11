@@ -172,14 +172,14 @@
                 {{$variable = $variable +1}}
             @endif
           @endif
-          @foreach ($imagenes_slides as $imagen_slide)
+          @foreach($imagenes_slides as $imagen_slide)
 
             @if(is_null($imagen_slide->imagen))
               <img src="img/slider/slider_nuevo_documento.jpg" alt="slider_nuevo_documento" title="{{'#slider-direction-'.$variable}}" />
             @else
               <img src="{{asset('storage').'/'.$imagen_slide->imagen}}" alt="" title="{{'#slider-direction-'.$variable}}" />
             @endif
-          {{$variable = $variable +1}}
+            {{$variable = $variable +1}}
           @endforeach
 
         </div>

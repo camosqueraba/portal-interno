@@ -140,7 +140,7 @@
                 <img src="../img/slider/slider_nuevo_documento.jpg" alt="slider_nuevo_documento" title="{{'#slider-direction-1'}}" />
                 @else
                 <div class="post-thumbnail">
-                  <img src="{{asset('storage').'/'.$anuncio->imagen}}" alt="{{$anuncio->titulo}}" />
+                  <img src="{{asset('storage').'/'.$anuncio->imagen}}" alt="{{$anuncio->titulo}}" width="600" />
                 </div>  
               
                 @endif
@@ -152,13 +152,14 @@
                   </div>
                 </div>
                 @if($anuncio->tipo == 'documento')
-                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}">VER {{$anuncio->titulo}}</a>
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}" target="_blank">VER {{$anuncio->titulo}}</a>
                   
-                @elseif($anuncio->documento == NULL)
-                  <a class="boton-anuncio-enlace" href="{{$anuncio->link}}">SIN ENLACE</a>
+                @elseif($anuncio->enlace == NULL)
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->link}}" target="_blank" style="pointer-events: none;">SIN ENLACE</a>
                 
                 @else($anuncio->documento != NULL)
-                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}">{{$anuncio->link}}</a>
+                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}" target="_blank">{{$anuncio->link}}
+                  </a>
                 @endif
                 
               </article>

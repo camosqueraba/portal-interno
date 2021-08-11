@@ -15,8 +15,15 @@
     <br>
     <br>
 
-    @if (Session::has('mensaje'))
-        {{Session::get('mensaje')}}
+    @if (Session::has('mensaje_error'))
+        <div class="alert alert-danger" role="alert">
+            {{Session::get('mensaje_error')}}
+        </div>
+    @endif
+    @if (Session::has('mensaje_correcto'))
+        <div class="alert alert-success" role="alert">
+            {{Session::get('mensaje_correcto')}}
+        </div>
     @endif
     <table id="tabla_anuncios" class="table table-sm table-bordered">
         <thead class="thead-light">
@@ -50,6 +57,8 @@
                 @if (!is_null($publication->imagen))
                 <td>
                     <img src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="{{$publication->imagen}}">
+                    
+
                 </td>
                 @elseif(!is_null($publication->documento))
                 <td>

@@ -140,7 +140,7 @@ class MainController extends Controller
         $cumpleanos_con_fotos = Birthday::whereMonth('fecha',$mes_actual)->orderBy('fecha')->get();
 
 
-        $excel_controller = new ExcelController();
+        $excel_controller = new ExcelController(); 
         try {
             //code...
             $cumpleanios_otros = $excel_controller->buscarCumpleanieros();
@@ -155,6 +155,7 @@ class MainController extends Controller
 
         $todos_cumpleanios = $this->ordernarCumpleanios($todos_cumpleanios);
         $cumpleanieros_hoy = $this->buscarCumpleaniosHoy($todos_cumpleanios);
+        
         return view('principal.index', compact('anuncios', 'datos_slides', 'imagenes_slides', 'documentos', 'cumpleanieros_hoy', 'todos_cumpleanios', 'mes', 'dia_mes', 'cumpleanos_con_fotos'));
         //return response()->json($cumpleanios_n_n);
         //return response()->json($todos_cumpleanios);
@@ -164,7 +165,7 @@ class MainController extends Controller
     public function show($id){
 
         $anuncio = Publication::select('tipo','titulo','descripcion','contenido','imagen','link', 'created_at', 'usuario_nombre')->where('id', $id)->first();
-        return view('principal.anuncios.anuncio-detalle', compact('anuncio'));
+        return view('principal.anuncio-detalle', compact('anuncio'));
         //return response()->json($anuncio);
 
     }

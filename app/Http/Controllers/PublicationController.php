@@ -108,7 +108,7 @@ class PublicationController extends Controller
         }
         if($request->hasFile('documento')){
             
-            $video = $request->file('documento');
+            $documento = $request->file('documento');
             $input  = array('documento' => $documento);
             $reglas = array('documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480');
             $validacion = Validator::make($input,  $reglas);
@@ -179,20 +179,23 @@ class PublicationController extends Controller
 
         $datos_publicacion = $request->except(['_token', '_method']); 
 
+        $publication = Publication::findOrFail($id);
+
         if($request->hasFile('imagen')){
-            $publication = Publication::findOrFail($id);
-
+            
+            $imagen = $request->file('imagen');
             Storage::delete('public/'.$publication->imagen);
-
+            $slug_nombre = Str::slug($request->input('titulo'));
+            $nombre_imagen = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$imagen->guessExtension(); 
+            
             $validatedData = $request->validate([
                 'imagen' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:6144',
 
             ]);
 
-            $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
+            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
             $datos_publicacion['imagen'] = request()->file('imagen')->storeAs('anuncios', $nombre_imagen, 'public');
-            $slug_nombre = Str::slug($request->input('titulo'));
-            $nombre_imagen = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$imagen->guessExtension();  
+             
         }
         
         if($request->hasFile('video')){

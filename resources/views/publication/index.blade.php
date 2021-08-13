@@ -15,8 +15,15 @@
     <br>
     <br>
 
-    @if (Session::has('mensaje'))
-        {{Session::get('mensaje')}}
+    @if (Session::has('mensaje_error'))
+        <div class="alert alert-danger" role="alert">
+            {{Session::get('mensaje_error')}}
+        </div>
+    @endif
+    @if (Session::has('mensaje_correcto'))
+        <div class="alert alert-success" role="alert">
+            {{Session::get('mensaje_correcto')}}
+        </div>
     @endif
     <table id="tabla_anuncios" class="table table-sm table-bordered">
         <thead class="thead-light">
@@ -50,20 +57,17 @@
                 @if (!is_null($publication->imagen))
                 <td>
                     <img src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="{{$publication->imagen}}">
+                    
+
                 </td>
-                  
-                @endif
-                @if (!is_null($publication->documento))
-                
-                    
-                    <td><div class="celda-documento">{{$publication->documento}}</div></td>                  
-                  
-                @endif
-                @if (!is_null($publication->video))
-                
-                    
-                        <td><div class="celda-enlace">{{$publication->video}}</div></td>                 
-                
+                @elseif(!is_null($publication->documento))
+                <td>
+                    <div class="celda-documento">{{$publication->documento}}</div>
+                </td>                  
+                @elseif (!is_null($publication->video))
+                <td>
+                    <div class="celda-enlace">{{$publication->video}}</div>
+                </td>                 
                 @endif
                 
 
@@ -73,6 +77,9 @@
                 <td>{{$publication->fecha_inicio}}</td>
                 <td>{{$publication->fecha_fin}}</td>
                 <td class="">
+                    <a class="btn btn-info d-inline" href="{{url('anuncios/'.$publication->id)}}">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
                     <a class="btn btn-success d-inline" href="{{url('publication/'.$publication->id.'/edit')}}">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>

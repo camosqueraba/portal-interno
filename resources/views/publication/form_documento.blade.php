@@ -35,7 +35,7 @@
     <label for="contenido" class="col-md-4 col-form-label text-md-right">{{ __('Contenido') }}</label>
 
     <div class="col-md-6">
-        <input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " required autocomplete="contenido">
+        <input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " autocomplete="contenido">
 
         @error('contenido')
             <span class="invalid-feedback" role="alert">

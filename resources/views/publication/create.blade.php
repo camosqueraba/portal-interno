@@ -4,16 +4,20 @@
     <div class="row justify-content-center"> 
         <div class="col-md-11">
             <div class="card">
-                @if (Session::has('mensaje'))
-                    {{Session::get('mensaje')}}
-                @endif
+                
                 <div class="card-header">
                     <h2>{{ __('Nueva Publicación') }}</h2> 
                 </div>
                 
 
                 <div class="card-body">
+                    @if (Session::has('mensaje_error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{Session::get('mensaje_error')}}
+                        </div>
+                    @endif
                     <div class="form-group row">
+                        
                         <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
                     
                         
@@ -38,20 +42,23 @@
                                        
                     <form id="form" style="display: none;" method="POST" action="{{ url('publication') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form'); 
+                        @include('publication.form')
                     </form>
 
                     <form id="form_documento" style="display: none;" method="POST" action="{{ url('publication') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form_documento'); 
+                        @include('publication.form_documento') 
                     </form>
 
                     <form id="form_cumpleanios" style="display: none;" method="POST" action="{{ url('birthday') }}" enctype="multipart/form-data"> 
                         @csrf
-                        @include('publication.form_cumpleanios'); 
+                        @include('publication.form_cumpleanios')
                     </form>
-
-                    
+                    <div class="col-md-2">
+                        <a id="btn-regresar" class="btn btn-success" href="{{url('publication')}}" style="margin-left: 320px">
+                            {{ __('Regresar') }} </a>
+                    </div>
+                   
                 </div>
                 
             </div>

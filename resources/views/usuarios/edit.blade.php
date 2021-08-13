@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ url('user/'.$usuario->id) }}" enctype="multipart/form-data">
                         @csrf
                         {{method_field('PATCH')}}
-                        @include('usuarios.form'); 
+                        @include('usuarios.form')
                     </form>
                 </div>
             </div>

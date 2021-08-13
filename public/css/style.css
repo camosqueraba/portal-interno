@@ -107,8 +107,8 @@ h3 {
 }
 
 h4 {
-  font-size: 24px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 15px;
 }
 
 h5 {
@@ -229,7 +229,7 @@ div#preloader {
   display: inline-block;
   font-size: 40px;
   font-weight: 600;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   position: relative;
   text-transform: capitalize;
 }
@@ -267,7 +267,9 @@ div#preloader {
   width: 100%;
   /*heigth: auto*/
   height: 120px;
-  background: rgba(0, 0, 0, 0.534);
+  /*background: rgba(0, 0, 0, 0.534);*/
+  background: rgb(206 206 206 / 18%);
+
   z-index: 9;
 }
 
@@ -309,7 +311,8 @@ div#preloader {
 }
 .main-menu ul.navbar-nav li.active > a::after {
   border: 1px solid #fff;
-  border: 1px solid #fff;
+  /*border: 1px solid #fff; */
+  /*border: 1px solid #e82a7a;*/
   bottom: 0px;
   content: "";
   left: 0;
@@ -444,7 +447,7 @@ div#preloader {
 }
 .stick .main-menu ul.navbar-nav li.active > a::after {
   /*border: 1px solid #fff;*/
-  border: 1px solid #fff;
+  border: 1px solid #e82a7a;
   bottom: 0px;
   content: "";
   left: 0;
@@ -1767,7 +1770,7 @@ div#preloader {
 
 .contact-content {
   padding: 100px;
-  background: #000 none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.555) none repeat scroll 0 0;
 }
 
 .contact-content-right {
@@ -2012,6 +2015,8 @@ div#preloader {
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
+  
+  
 }
 
 .header-bg.home-2 {
@@ -2493,12 +2498,24 @@ span.email-notes {
 }
 
 
-#boton_menu:hover > div{
-  visibility: visible;
-  text-align: center;
-
+ #text-gradient{
+  background-size: cover;
+  color: transparent;
+  background-clip: text;
+  animation: color 3s linear infinite; 
+  background-size: 500%;
+  background-image: linear-gradient(to left, #FFD700, #7B68EE, #3498db, #2ecc71, #FFD700);    
+   
 }
+@keyframes color {
+  from {
+      background-position: 0% 50%;
+  }
 
+  to {
+      background-position: 100% 50%;
+  }
+}
 .contenedor_opciones_menu{
 margin-top: 0px;
 visibility: hidden;
@@ -2507,6 +2524,7 @@ width: auto;
 height: auto;
 /*overflow-y: scroll;*/
 background-color: rgb(110,110,110);
+z-index: 1000;
 }
 .titulo_enlace_menu{
   margin-bottom: 0px;
@@ -2528,13 +2546,14 @@ background-color: rgb(110,110,110);
     padding: 2px 0px;
     margin-bottom: 0px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     padding-left: 5px;
     text-align: left;
+    z-index: 1000;
 }
 #enlace_menu:hover {
     background: #003660;
-    font-size: 22px;
+    font-size: 18px;
   }
 
 .dropdown-content a:hover {

@@ -49,8 +49,8 @@ class UserController extends Controller
         //
 
         $datos_usuario = $request->except('_token');
-       /*  $password_no_cript = $datos_usuario['password'];
-        $datos_usuario['password'] = bcrypt($password_no_cript); */
+         $password_no_cript = $datos_usuario['password'];
+        $datos_usuario['password'] = bcrypt($password_no_cript);
         //User::insert($datos_usuario);
         User::create($datos_usuario);
         
@@ -104,8 +104,8 @@ class UserController extends Controller
          
 
             $datos_usuario = $request->except(['_token', '_method','password_confirmation']);
-           /*  $password_no_cript = $datos_usuario['password'];
-            $datos_usuario['password'] = bcrypt($password_no_cript); */
+            $password_no_cript = $datos_usuario['password'];
+            $datos_usuario['password'] = bcrypt($password_no_cript);
             User::where('id', '=', $id)->update($datos_usuario);
             $usuario = User::findOrFail($id);
          

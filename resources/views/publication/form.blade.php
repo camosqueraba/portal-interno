@@ -51,51 +51,75 @@
     <label for="imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
     @if (@isset($publication->imagen))
         <img class="col-md-3"src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="$publication->imagen">
+        <div class="col-md-3">
+            <input id="imagen" type="file" class="form-control @error('imagen') is-invalid @enderror" name="imagen"  autocomplete="">
+            <small class="form-text text-muted">Admitidos jpg, png, jpeg, gif maximo 6Mb</small>
+            @error('imagen')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    @else
+        <div class="col-md-6">
+            <input id="imagen" type="file" class="form-control @error('imagen') is-invalid @enderror" name="imagen"  autocomplete="">
+            <small class="form-text text-muted">Admitidos jpg, png, jpeg, gif maximo 6Mb</small>
+            @error('imagen')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    @endif    
 
-    @endif
+    
 
-    <div class="col-md-3">
-
-
-        <input id="imagen" type="file" class="form-control @error('imagen') is-invalid @enderror" name="imagen"  autocomplete="">
-
-        @error('imagen')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
+        
 </div>
 
 <div class="form-group row">
     <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
+   
 
     <div class="col-md-6">
 
         <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video"  autocomplete="video">
-
+        <small class="form-text text-muted">Admitidos MP4 maximo 200Mb</small>
+        @if (@isset($publication->video))
+        <small class="form-text text-muted">
+            <strong>Actual </strong> {{ $publication->video}}
+        </small>
+        @endif
         @error('video')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
     </div>
+   
+  
 </div>
 
 <div class="form-group row">
-    <label for="documento" class="col-md-4 col-form-label text-md-right">{{ __('Documento') }}</label>
-
+    <label for="documento" class="col-md-4 col-form-label text-md-right">{{__('Documento')}}
+    </label>
     <div class="col-md-6">
-
         <input id="documento" type="file" class="form-control @error('documento') is-invalid @enderror" name="documento"  autocomplete="video">
-
+        <small class="form-text text-muted">Admitidos excel, word, pdf y txt maximo 20Mb</small>
+        @if (@isset($publication->documento))
+        <small class="form-text text-muted"><strong>Actual</strong> {{ $publication->documento}}</small>
+        @endif
         @error('documento')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
+        
     </div>
+    
 </div>
+
+
 
 <div class="form-group row">
     <label for="link" class="col-md-4 col-form-label text-md-right">{{ __('Enlace Externo') }}</label>

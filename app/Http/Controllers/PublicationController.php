@@ -180,7 +180,8 @@ class PublicationController extends Controller
         $datos_publicacion = $request->except(['_token', '_method']); 
 
         $publication = Publication::findOrFail($id);
-
+        $datos_publicacion['tipo'] = $publication->tipo;
+        
         if($request->hasFile('imagen')){
             
             $imagen = $request->file('imagen');
@@ -199,21 +200,40 @@ class PublicationController extends Controller
         }
         
         if($request->hasFile('video')){
-            $publication = Publication::findOrFail($id);
-
+            $video = $request->file('video');
             Storage::delete('public/'.$publication->video);
-
+            $slug_nombre = Str::slug($request->input('titulo'));
+            $nombre_video = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$video->guessExtension(); 
+            
             $validatedData = $request->validate([
-                'video' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:6144',
+                'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
 
             ]);
 
-            $datos_publicacion['video'] = request()->file('video')->store('uploads', 'public');
+            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
+            $datos_publicacion['video'] = request()->file('video')->storeAs('anuncios', $nombre_video, 'public');
+             
+        }
+
+        if($request->hasFile('documento')){
+            
+            $documento = $request->file('documento');
+            Storage::delete('public/'.$publication->documento);
+            $slug_nombre = Str::slug($request->input('titulo'));
+            $nombre_documento = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$documento->guessExtension(); 
+            
+            $validatedData = $request->validate([
+                'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480'
+
+            ]);
+
+            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
+            $datos_publicacion['documento'] = request()->file('documento')->storeAs('documentos', $nombre_documento, 'public');
         }
         
         Publication::where('id', '=', $id)->update($datos_publicacion);
 
-        $publication = Publication::findOrFail($id);
+        //$publication = Publication::findOrFail($id);
         //return view('publication.edit', compact('publication'));
         //$datos = Publication::paginate(5);
         return redirect('publication')->with('mensaje','Publicación editada');
@@ -229,7 +249,6 @@ class PublicationController extends Controller
     {
         //
         Publication::destroy($id);
-
         return redirect('publication')->with('mensaje','Publicación borrada');
     }
 }

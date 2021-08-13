@@ -33,6 +33,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/publication/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/publication/form.css') }}" rel="stylesheet">
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     @yield('css')

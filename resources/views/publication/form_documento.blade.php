@@ -32,10 +32,13 @@
 </div>
 
 <div class="form-group row">
-    <label for="contenido" class="col-md-4 col-form-label text-md-right">{{ __('Contenido') }}</label>
+    <label for="contenido_documento" class="col-md-4 col-form-label text-md-right">{{ __('Contenido') }}</label>
 
     <div class="col-md-6">
-        <input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " autocomplete="contenido">
+        {{-- <input id="contenido" type="text" class="form-control @error('contenido') is-invalid @enderror" name="contenido" value="{{isset($publication->contenido)?$publication->contenido:old('contenido')}} " autocomplete="contenido"> --}}
+        
+        <textarea id="contenido" type="text" class="form-control" @error('contenido') is-invalid @enderror name="contenido" autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
+
 
         @error('contenido')
             <span class="invalid-feedback" role="alert">
@@ -139,3 +142,156 @@
         </a>
     </div>
 </div>
+
+@section('ck_editor')
+
+{{-- <script type="text/javascript">
+    /* $(document).ready(function () {
+        $('#contenido').ckeditor();
+    }); */
+
+    ClassicEditor
+        .create(document.querySelector('#contenido'))
+        .catch(error => {
+            console.error(error);
+        }); --}}
+
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#contenido' ), 
+                {
+
+                toolbar: {
+                    items: [
+                        'heading',
+                        'fontSize',
+                        'bold',
+                        'alignment',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'outdent',
+                        'indent',
+                        '|',
+                        'blockQuote',
+                        'insertTable'
+                    ]
+                },
+                language: 'es',
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                    licenseKey: '',
+
+                link: {
+                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                    addTargetToExternalLinks: true,
+
+                    // Let the users control the "download" attribute of each link.
+                    decorators: [
+                    {
+                    mode: 'manual',
+                    label: 'Downloadable',
+                    attributes: {
+                        download: 'download'
+                    }
+                }
+            ],
+            defaultProtocol: 'http://'
+
+        }
+
+
+
+                } )
+                .then( editor => {
+                    window.editor = editor;
+
+
+
+
+                } )
+                .catch( error => {
+                    console.error( 'Oops, something went wrong!' );
+                    console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                    console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
+                    console.error( error );
+                } );
+
+
+                ClassicEditor
+                .create( document.querySelector( '#contenido_documento' ), 
+                {
+
+                toolbar: {
+                    items: [
+                        'heading',
+                        'fontSize',
+                        'bold',
+                        'alignment',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'outdent',
+                        'indent',
+                        '|',
+                        'blockQuote',
+                        'insertTable'
+                    ]
+                },
+                language: 'es',
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                    licenseKey: '',
+
+                link: {
+                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                    addTargetToExternalLinks: true,
+
+                    // Let the users control the "download" attribute of each link.
+                    decorators: [
+                    {
+                    mode: 'manual',
+                    label: 'Downloadable',
+                    attributes: {
+                        download: 'download'
+                    }
+                }
+            ],
+            defaultProtocol: 'http://'
+
+        }
+
+
+
+                } )
+                .then( editor => {
+                    window.editor = editor;
+
+
+
+
+                } )
+                .catch( error => {
+                    console.error( 'Oops, something went wrong!' );
+                    console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                    console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
+                    console.error( error );
+                } );
+
+
+</script>
+
+
+@endsection

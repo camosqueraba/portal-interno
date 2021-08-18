@@ -147,17 +147,17 @@
                
                 <div class="post-information">
                   <div class="entry-content">
-                    <p style="font-size: 20px; ">{!!$anuncio->contenido!!}</p>
+                    <p style="font-size: 20px;">{!!$anuncio->contenido!!}</p>
                     
                   </div>
                 </div>
                 @if($anuncio->tipo == 'documento')
-                  <a class="boton-anuncio-enlace" href="{{$anuncio->documento}}" target="_blank">VER {{$anuncio->titulo}}</a>
+                  <a class="boton-anuncio-enlace" href="{{url(asset('storage').'/'.$anuncio->documento)}}" target="_blank">VER {{$anuncio->titulo}}</a>
                   
-                @elseif($anuncio->enlace == NULL)
+                @elseif($anuncio->link == NULL)
                   <a class="boton-anuncio-enlace" href="{{$anuncio->link}}" target="_blank" style="pointer-events: none;">SIN ENLACE</a>
                 
-                @else($anuncio->enlace != NULL)
+                @elseif($anuncio->link != NULL)
                   <a class="boton-anuncio-enlace" href="{{$anuncio->link}}" target="_blank">{{$anuncio->link}}
                   </a>
                 @endif

@@ -6,7 +6,7 @@
 <div class="form-group row">
     <label for="titulo" class="col-md-4 col-form-label text-md-right">{{ __('Titulo') }}</label>
 
-    <div class="col-md-6">
+    <div class="col-md-6"> 
         <input id="titulo" type="text" class="form-control @error('titulo') is-invalid @enderror" name="titulo" value="{{isset($publication->titulo)?$publication->titulo:old('titulo')}}" required autocomplete="titulo" autofocus>
 
         @error('titulo')
@@ -192,72 +192,73 @@
             console.error(error);
         }); --}}
 
-        <script>ClassicEditor
-				.create( document.querySelector( '#contenido' ), {
+<script>ClassicEditor
+.create( document.querySelector( '#contenido' ),
+{
 
-				toolbar: {
-					items: [
-						'heading',
-						'fontSize',
-						'bold',
-						'alignment',
-						'link',
-						'bulletedList',
-						'numberedList',
-						'|',
-						'outdent',
-						'indent',
-						'|',
-						'blockQuote',
-						'insertTable'
-					]
-				},
-				language: 'es',
-				table: {
-					contentToolbar: [
-						'tableColumn',
-						'tableRow',
-						'mergeTableCells'
-					]
-				},
-					licenseKey: '',
+	toolbar:
+    {
+		items: [
+			'heading',
+			'fontSize',
+			'bold',
+			'alignment',
+			'link',
+			'bulletedList',
+			'numberedList',
+			'|',
+			'outdent',
+			'indent',
+			'|',
+			'blockQuote',
+			'insertTable'
+		]
+	},
+	language: 'es',
+	table:
+    {
+		contentToolbar: [
+			'tableColumn',
+			'tableRow',
+			'mergeTableCells'
+		]
+	},
+	licenseKey: '',
 
-                link: {
-                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
-                    addTargetToExternalLinks: true,
+    link:
+     {
+        // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+        addTargetToExternalLinks: true,
 
-                    // Let the users control the "download" attribute of each link.
-                    decorators: [
-                    {
-                    mode: 'manual',
-                    label: 'Downloadable',
-                    attributes: {
-                        download: 'download'
-                    }
+        // Let the users control the "download" attribute of each link.
+        decorators:
+        [
+            {
+                mode: 'manual',
+                label: 'Downloadable',
+                attributes: 
+                {
+                    download: 'download'
                 }
-            ],
-            defaultProtocol: 'http://'
+            }
+        ],
+        defaultProtocol: 'http://'
+    }
+} )
+.then( editor => {
+	window.editor = editor;
+} )
+.catch( error => {
+	console.error( 'Oops, something went wrong!' );
+	console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+	console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
+	console.error( error ); 
+} );
 
-        }
 
 
-
-				} )
-				.then( editor => {
-					window.editor = editor;
-
-
-
-
-				} )
-				.catch( error => {
-					console.error( 'Oops, something went wrong!' );
-					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-					console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
-					console.error( error );
-				} );
 
 </script>
 
-</html>
+
 @endsection

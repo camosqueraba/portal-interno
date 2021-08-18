@@ -57,6 +57,17 @@ class PublicationController extends Controller
         // $documento = $request->file('documento');
         // $video = $request->file('video');
         
+        if($datos_publicacion['tipo'] == 'documento'){
+
+            $validatedData = $request->validate([
+                'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480|required',
+            //     'password' => 'required|min:5',
+            //     'email' => 'required|email|unique:users'
+            // ], [
+            //     'name.required' => 'Name is required',
+            //     'password.required' => 'Password is required'
+            ]);
+        }
          
 
         if($request->hasFile('imagen')){
@@ -85,7 +96,7 @@ class PublicationController extends Controller
         if($request->hasFile('video')){
             
             $video = $request->file('video');
-            $input  = array('video' => $imagen);
+            $input  = array('video' => $video);
             $reglas = array('video' => 'mimes:mp4,mov,ogg,qt|max:204800',);
             $validacion = Validator::make($input,  $reglas);
             $extension = pathinfo($request->input('video'));

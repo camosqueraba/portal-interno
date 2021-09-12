@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
@@ -65,6 +65,15 @@ class PublicationController extends Controller
         //     'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
         //     'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480',
         // ]);
+
+        $request->validate([
+
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'imagen' => 'image|mimes:jpg,png,jpeg,gif,svg|max:6144',
+            'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
+            'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480',
+        ]);
 
         if($request->hasFile('imagen')){
             
@@ -201,7 +210,7 @@ class PublicationController extends Controller
         Publication::create($datos_publicacion);
         //return response()->json($datos_publicacion);
 
-        return redirect('publication')->with('mensaje_correcto', 'Publicación creada correctamente.');
+        return redirect('publication')->with('mensaje_de_creado', 'Publicación creada correctamente.');
     }
 
     /**
@@ -263,7 +272,7 @@ class PublicationController extends Controller
         $publication = Publication::findOrFail($id);
         //return view('publication.edit', compact('publication'));
         //$datos = Publication::paginate(5);
-        return redirect('publication')->with('mensaje','Publicación editada');
+        return redirect('publication')->with('mensaje_de_editado','Publicación editada');
     }
 
     /**
@@ -277,6 +286,6 @@ class PublicationController extends Controller
         //
         Publication::destroy($id);
 
-        return redirect('publication')->with('mensaje','Publicación borrada');
+        return redirect('publication')->with('mensaje_de_borrado','Publicación borrada');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\IOFactory; 
 use Illuminate\Http\Request;
 
 class ExcelController extends Controller

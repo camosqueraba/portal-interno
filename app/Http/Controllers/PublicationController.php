@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
@@ -19,14 +19,13 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        //
+    
         $datos = Publication::orderBy('created_at', 'desc')->get();
-        return view('publication.index',compact('datos'));
+        
         //$publications = Publication::latest()->paginate(5);
 
-        //return view('publication.index', compact('publications'))
-         //   ->with('i', (request()->input('page', 1) - 1) * 5);
 
+        return view('publication.index',compact('datos'));
     }
 
     /**
@@ -36,8 +35,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        //
-
+    
         return view('publication.create');
     }
 
@@ -49,26 +47,31 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
         $datos_publicacion = $request->except('_token');
 
         
-        // $imagen = $request->file('imagen');
-        // $documento = $request->file('documento');
-        // $video = $request->file('video');
+        $imagen = $request->file('imagen');
+        $documento = $request->file('documento');
+        $video = $request->file('video');
         
-        if($datos_publicacion['tipo'] == 'documento'){
+        
 
-            $validatedData = $request->validate([
-                'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480|required',
-            //     'password' => 'required|min:5',
-            //     'email' => 'required|email|unique:users'
-            // ], [
-            //     'name.required' => 'Name is required',
-            //     'password.required' => 'Password is required'
-            ]);
-        }
-         
+        // $validatedData = $request->validate([
+
+        //     'imagen' => 'image|mimes:jpg,png,jpeg,gif,svg|max:6144',
+        //     'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
+        //     'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480',
+        // ]);
+
+        $request->validate([
+
+            'titulo' => 'required|max:105',
+            'descripcion' => 'required|max:255',
+            'imagen' => 'image|mimes:jpg,png,jpeg,gif,svg|max:6144',
+            'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
+            'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480',
+        ]);
 
         if($request->hasFile('imagen')){
             
@@ -76,27 +79,46 @@ class PublicationController extends Controller
             $input  = array('imagen' => $imagen);
             $reglas = array('imagen' => 'image|mimes:jpg,png,jpeg,gif,svg|max:6144');
             $validacion = Validator::make($input,  $reglas);
-                       
+            $extension = pathinfo($request->input('imagen'));
+            
 
             if ($validacion->fails())
             {
-              
+              /*return view("mensajes.msj_rechazado")->with("msj","El tipo de archivo no es admitido  o es demasiado grande para subirlo");*/
               return redirect('publication/create')->with('mensaje_error', 'El tipo de archivo no es admitido  o es demasiado grande para subirlo.');
+
             }
             else 
             {
-                         
-                $slug_nombre = Str::slug($request->input('titulo'));
-                $nombre_imagen = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$imagen->guessExtension(); 
-                              
+                 
+                //$ruta = storage_path();
+                $slug_nombre = 
+                $nombre_imagen = date('Y-m-d H-i-s').'-'.Str::slug($request->input('titulo')).'.'.$imagen->guessExtension(); 
+                //$ruta ='imagenes/'.date('(Y-m-d H-i-s)').'/'.$request->input('titulo').'.'.$extension;
+                
+                //Storage::disk('local')->put('uploads',  File::get($imagen));
+                //$imagen->move($ruta, $nombre_imagen);
+                //$datos_publicacion['imagen'] = request()->file('imagen')->storeAs('imagenes', $nombre_imagen);
+                //$datos_publicacion['imagen'] = $ruta.'/anuncios/'.$nombre_imagen;
                 $datos_publicacion['imagen'] = request()->file('imagen')->storeAs('anuncios', $nombre_imagen, 'public'); 
             } 
+            
+           /* if($request->hasfile('imagen')):
+             $imagen         = $request->file('imagen');
+             $nombreimagen   = Str::slug($request->nombre).".".$imagen->guessExtension();
+             //$nombreimagen = $imagen->getClientOriginalName();
+             $ruta           = public_path("img/post/");
+             $imagen->move($ruta,$nombreimagen);         
+             //$model->foto  = $nombreimagen; // asignar el nombre para guardar
+            endif;*/
+            
+
         }
 
-        if($request->hasFile('video')){
+        if($request->hasFile('documento')){
             
-            $video = $request->file('video');
-            $input  = array('video' => $video);
+            $video = $request->file('documento');
+            $input  = array('documento' => $imagen);
             $reglas = array('video' => 'mimes:mp4,mov,ogg,qt|max:204800',);
             $validacion = Validator::make($input,  $reglas);
             $extension = pathinfo($request->input('video'));
@@ -104,50 +126,89 @@ class PublicationController extends Controller
 
             if ($validacion->fails())
             {
-              
+              /*return view("mensajes.msj_rechazado")->with("msj","El tipo de archivo no es admitido  o es demasiado grande para subirlo");*/
               return redirect('publication/create')->with('mensaje_error', 'El tipo de archivo no es admitido  o es demasiado grande para subirlo.');
+
             }
             else 
             {
                  
-                
+                //$ruta = storage_path();
                 $slug_nombre = 
-                $nombre_video = date('Y-m-d H-i-s').'-v-'.Str::slug($request->input('titulo')).'.'.$video->guessExtension(); 
+                $nombre_documento = date('Y-m-d H-i-s').'-v-'.Str::slug($request->input('titulo')).'.'.$documento->guessExtension(); 
+                //$ruta ='imagenes/'.date('(Y-m-d H-i-s)').'/'.$request->input('titulo').'.'.$extension;
                 
-                $datos_publicacion['video'] = request()->file('video')->storeAs('anuncios', $nombre_video, 'public'); 
+                //Storage::disk('local')->put('uploads',  File::get($imagen));
+                //$imagen->move($ruta, $nombre_imagen);
+                //$datos_publicacion['imagen'] = request()->file('imagen')->storeAs('imagenes', $nombre_imagen);
+                //$datos_publicacion['imagen'] = $ruta.'/anuncios/'.$nombre_imagen;
+                $datos_publicacion['video'] = request()->file('documento')->storeAs('anuncios', $nombre_documento, 'public'); 
             } 
+            
+           /* if($request->hasfile('imagen')):
+             $imagen         = $request->file('imagen');
+             $nombreimagen   = Str::slug($request->nombre).".".$imagen->guessExtension();
+             //$nombreimagen = $imagen->getClientOriginalName();
+             $ruta           = public_path("img/post/");
+             $imagen->move($ruta,$nombreimagen);         
+             //$model->foto  = $nombreimagen; // asignar el nombre para guardar
+            endif;*/
+            
+
+           // $datos_publicacion['video'] = request()->file('video')->store('uploads', 'public');
+
         }
         if($request->hasFile('documento')){
             
-            $documento = $request->file('documento');
+            $video = $request->file('documento');
             $input  = array('documento' => $documento);
-            $reglas = array('documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480');
+            $reglas = array('video' => 'mimes:mp4,mov,ogg,qt|max:204800',);
             $validacion = Validator::make($input,  $reglas);
-            
+            //$extension = pathinfo($request->input('documento'));
             
 
             if ($validacion->fails())
             {
-              
+              /*return view("mensajes.msj_rechazado")->with("msj","El tipo de archivo no es admitido  o es demasiado grande para subirlo");*/
               return redirect('publication/create')->with('mensaje_error', 'El tipo de archivo no es admitido  o es demasiado grande para subirlo.');
+
             }
             else 
             {
+                 
+                //$ruta = storage_path();
+                $slug_nombre = 
+                $nombre_documento = date('Y-m-d').'-'.Str::slug($request->input('titulo')).'.'.$documento->guessExtension(); 
+                //$ruta ='imagenes/'.date('(Y-m-d H-i-s)').'/'.$request->input('titulo').'.'.$extension;
                 
-                $slug_nombre = Str::slug($request->input('titulo'));
-                $nombre_documento = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$documento->guessExtension(); 
-                
+                //Storage::disk('local')->put('uploads',  File::get($imagen));
+                //$imagen->move($ruta, $nombre_imagen);
+                //$datos_publicacion['imagen'] = request()->file('imagen')->storeAs('imagenes', $nombre_imagen);
+                //$datos_publicacion['imagen'] = $ruta.'/anuncios/'.$nombre_imagen;
                 $datos_publicacion['documento'] = request()->file('documento')->storeAs('documentos', $nombre_documento, 'public'); 
             } 
             
-          
+           /* if($request->hasfile('imagen')):
+             $imagen         = $request->file('imagen');
+             $nombreimagen   = Str::slug($request->nombre).".".$imagen->guessExtension();
+             //$nombreimagen = $imagen->getClientOriginalName();
+             $ruta           = public_path("img/post/");
+             $imagen->move($ruta,$nombreimagen);         
+             //$model->foto  = $nombreimagen; // asignar el nombre para guardar
+            endif;*/
+            
+
+           // $datos_publicacion['video'] = request()->file('video')->store('uploads', 'public');
+
+
+            //$datos_publicacion['documento'] = request()->file('documento')->store('uploads', 'public');
 
         }
         //Publication::insert($datos_publicacion);
         Publication::create($datos_publicacion);
         //return response()->json($datos_publicacion);
 
-        return redirect('publication')->with('mensaje_correcto', 'Publicación creada correctamente.');
+        return redirect('publication')->with('mensaje_de_creado', 'Publicación creada correctamente.');
     }
 
     /**
@@ -190,64 +251,26 @@ class PublicationController extends Controller
 
         $datos_publicacion = $request->except(['_token', '_method']); 
 
-        $publication = Publication::findOrFail($id);
-        $datos_publicacion['tipo'] = $publication->tipo;
-        
         if($request->hasFile('imagen')){
-            
-            $imagen = $request->file('imagen');
+            $publication = Publication::findOrFail($id);
+
             Storage::delete('public/'.$publication->imagen);
-            $slug_nombre = Str::slug($request->input('titulo'));
-            $nombre_imagen = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$imagen->guessExtension(); 
-            
+
             $validatedData = $request->validate([
                 'imagen' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:6144',
 
             ]);
 
-            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
-            $datos_publicacion['imagen'] = request()->file('imagen')->storeAs('anuncios', $nombre_imagen, 'public');
-             
+            $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
+
+
         }
-        
-        if($request->hasFile('video')){
-            $video = $request->file('video');
-            Storage::delete('public/'.$publication->video);
-            $slug_nombre = Str::slug($request->input('titulo'));
-            $nombre_video = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$video->guessExtension(); 
-            
-            $validatedData = $request->validate([
-                'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
-
-            ]);
-
-            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
-            $datos_publicacion['video'] = request()->file('video')->storeAs('anuncios', $nombre_video, 'public');
-             
-        }
-
-        if($request->hasFile('documento')){
-            
-            $documento = $request->file('documento');
-            Storage::delete('public/'.$publication->documento);
-            $slug_nombre = Str::slug($request->input('titulo'));
-            $nombre_documento = date('Y-m-d H-i-s').'-'.$slug_nombre.'.'.$documento->guessExtension(); 
-            
-            $validatedData = $request->validate([
-                'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480'
-
-            ]);
-
-            // $datos_publicacion['imagen'] = request()->file('imagen')->store('uploads', 'public');
-            $datos_publicacion['documento'] = request()->file('documento')->storeAs('documentos', $nombre_documento, 'public');
-        }
-        
         Publication::where('id', '=', $id)->update($datos_publicacion);
 
-        //$publication = Publication::findOrFail($id);
+        $publication = Publication::findOrFail($id);
         //return view('publication.edit', compact('publication'));
         //$datos = Publication::paginate(5);
-        return redirect('publication')->with('mensaje','Publicación editada');
+        return redirect('publication')->with('mensaje_de_editado','Publicación editada');
     }
 
     /**
@@ -260,6 +283,7 @@ class PublicationController extends Controller
     {
         //
         Publication::destroy($id);
-        return redirect('publication')->with('mensaje','Publicación borrada');
+
+        return redirect('publication')->with('mensaje_de_borrado','Publicación borrada');
     }
 }

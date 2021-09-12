@@ -10,7 +10,7 @@
     <a class="btn btn-primary" href="{{url('publication/create')}}">Crear Nueva Publicacion</a>
     <a class="btn btn-ver-cumpleaños" style="background-color: #cf3b79; color: white" href="{{url('birthday')}}">Ver Cumpleaños</a>
     @if (Auth::user()->rol == "administrador")
-    <a class="btn btn-usuarios btn-primary" style="float: right" href="{{url('user')}}">administra usuarios</a>
+    <a class="btn btn-usuarios btn-primary" style="float: right" href="{{url('user')}}">Administrar Usuarios</a>
       @endif
     <br>
     <br>
@@ -20,9 +20,19 @@
             {{Session::get('mensaje_error')}}
         </div>
     @endif
-    @if (Session::has('mensaje_correcto'))
+    @if (Session::has('mensaje_de_creado'))
+        <div class="alert alert-primary" role="alert">
+            {{Session::get('mensaje_de_creado')}}
+        </div>
+    @endif
+    @if (Session::has('mensaje_de_editado'))
         <div class="alert alert-success" role="alert">
-            {{Session::get('mensaje_correcto')}}
+            {{Session::get('mensaje_de_editado')}}
+        </div>
+    @endif
+    @if (Session::has('mensaje_de_borrado'))
+        <div class="alert alert-danger" role="alert">
+            {{Session::get('mensaje_de_borrado')}}
         </div>
     @endif
     <table id="tabla_anuncios" class="table table-sm table-bordered">
@@ -54,20 +64,26 @@
                 <td><div class="celda-descripcion">{{$publication->descripcion}}</td>
           
                 <td><div class="celda-enlace">{{$publication->link}}</div></td>
+                
                 @if (!is_null($publication->imagen))
                 <td>
                     <img src="{{asset('storage').'/'.$publication->imagen}}" width="100" alt="{{$publication->imagen}}">
-                    
-
                 </td>
                 @elseif(!is_null($publication->documento))
                 <td>
-                    <div class="celda-documento">{{$publication->documento}}</div>
+                    <div class="celda-documento">
+                        <a href="{{url(asset('storage').'/'.$publication->documento)}}" target="_blank">{{$publication->documento}}
+                        </a>
+                    </div>
                 </td>                  
                 @elseif (!is_null($publication->video))
                 <td>
                     <div class="celda-enlace">{{$publication->video}}</div>
                 </td>                 
+                @elseif (is_null($publication->imagen) && is_null($publication->documento) && is_null($publication->video))
+                <td>
+                    <img src="./img/slider/slider_nuevo_documento.jpg" width="100" alt="imagen_de_referencia" title="imagen_de_referencia" />
+                </td>
                 @endif
                 
 

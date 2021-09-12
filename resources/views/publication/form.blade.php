@@ -7,7 +7,7 @@
     <label for="titulo" class="col-md-4 col-form-label text-md-right">{{ __('Titulo') }}</label>
 
     <div class="col-md-6"> 
-        <input id="titulo" type="text" class="form-control @error('titulo') is-invalid @enderror" name="titulo" value="{{isset($publication->titulo)?$publication->titulo:old('titulo')}}" required autocomplete="titulo" autofocus>
+        <input id="titulo" type="text" class="form-control @error('titulo') is-invalid @enderror" name="titulo" value="{{isset($publication->titulo)?$publication->titulo:old('titulo')}}" required autocomplete="titulo" maxlength="105" autofocus>
 
         @error('titulo')
             <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
     <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
 
     <div class="col-md-6">
-        <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ isset($publication->descripcion)?$publication->descripcion:old('descripcion') }}" required autocomplete="descripcion" autofocus>
+        <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ isset($publication->descripcion)?$publication->descripcion:old('descripcion') }}" required autocomplete="descripcion" maxlength="205" autofocus>
 
         @error('descripcion')
             <span class="invalid-feedback" role="alert">

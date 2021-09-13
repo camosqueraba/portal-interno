@@ -37,7 +37,7 @@
     <div class="col-md-6">
       
 
-        <textarea id="contenido" type="text" class="form-control" @error('contenido') is-invalid @enderror name="contenido" autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
+        <textarea id="contenido" type="text" class="editor form-control" @error('contenido') is-invalid @enderror name="contenido" autocomplete="contenido">{{isset($publication->contenido)?$publication->contenido:old('contenido')}}</textarea>
 
         @error('contenido')
             <span class="invalid-feedback" role="alert">
@@ -180,84 +180,74 @@
 </div>
 
 @section('ck_editor')
+<script>
+    
+    var textarea_editor = document.querySelectorAll('.editor');
 
-{{-- <script type="text/javascript">
-    /* $(document).ready(function () {
-        $('#contenido').ckeditor();
-    }); */
+    for (var i = 0; i < textarea_editor.length; ++i) {
 
-    ClassicEditor
-        .create(document.querySelector('#contenido'))
-        .catch(error => {
-            console.error(error);
-        }); --}}
-
-<script>ClassicEditor
-.create( document.querySelector( '#contenido' ),
-{
-
-	toolbar:
-    {
-		items: [
-			'heading',
-			'fontSize',
-			'bold',
-			'alignment',
-			'link',
-			'bulletedList',
-			'numberedList',
-			'|',
-			'outdent',
-			'indent',
-			'|',
-			'blockQuote',
-			'insertTable'
-		]
-	},
-	language: 'es',
-	table:
-    {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
-		]
-	},
-	licenseKey: '',
-
-    link:
-     {
-        // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
-        addTargetToExternalLinks: true,
-
-        // Let the users control the "download" attribute of each link.
-        decorators:
-        [
+        //ClassicEditor.create( document.querySelector( '#contenido' ),
+        ClassicEditor.create( textarea_editor[i],
+        {
+        	toolbar:
             {
-                mode: 'manual',
-                label: 'Downloadable',
-                attributes: 
-                {
-                    download: 'download'
-                }
+        		items: [
+        			'heading',
+        			'fontSize',
+        			'bold',
+        			'alignment',
+        			'link',
+        			'bulletedList',
+        			'numberedList',
+        			'|',
+        			'outdent',
+        			'indent',
+        			'|',
+        			'blockQuote',
+        			'insertTable'
+        		]
+        	},
+        	language: 'es',
+        	table:
+            {
+        		contentToolbar: [
+        			'tableColumn',
+        			'tableRow',
+        			'mergeTableCells'
+        		]
+        	},
+        	licenseKey: '',
+
+            link:
+             {
+                // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                addTargetToExternalLinks: true,
+
+                // Let the users control the "download" attribute of each link.
+                decorators:
+                [
+                    {
+                        mode: 'manual',
+                        label: 'Downloadable',
+                        attributes: 
+                        {
+                            download: 'download'
+                        }
+                    }
+                ],
+                defaultProtocol: 'http://'
             }
-        ],
-        defaultProtocol: 'http://'
+        } )
+        .then( editor => {
+        	window.editor = editor;
+        } )
+        .catch( error => {
+        	console.error( 'Oops, something went wrong!' );
+        	console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+        	console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
+        	console.error( error ); 
+        } );
     }
-} )
-.then( editor => {
-	window.editor = editor;
-} )
-.catch( error => {
-	console.error( 'Oops, something went wrong!' );
-	console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-	console.warn( 'Build id: v707c69mzyuh-h11itm18cy0z' );
-	console.error( error ); 
-} );
-
-
-
-
 </script>
 
 

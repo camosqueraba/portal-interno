@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers; 
 
@@ -67,7 +67,7 @@ class PublicationController extends Controller
         $request->validate([
 
             'titulo' => 'required|max:105',
-            'descripcion' => 'required|max:255',
+            'descripcion' => 'required|max:205',
             'imagen' => 'image|mimes:jpg,png,jpeg,gif,svg|max:6144',
             'video' => 'mimes:mp4,mov,ogg,qt|max:204800',
             'documento' => 'mimes:txt,doc,docx,xls,xlsx,pdf|max:20480',
